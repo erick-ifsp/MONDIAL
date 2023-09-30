@@ -35,9 +35,9 @@
             this.b1 = new System.Windows.Forms.TextBox();
             this.nome = new System.Windows.Forms.Label();
             this.dados = new System.Windows.Forms.ListView();
-            this.AAAA = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.id_user = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.password = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -92,7 +92,7 @@
             this.b1.MaxLength = 20;
             this.b1.MinimumSize = new System.Drawing.Size(275, 20);
             this.b1.Name = "b1";
-            this.b1.Size = new System.Drawing.Size(275, 20);
+            this.b1.Size = new System.Drawing.Size(275, 22);
             this.b1.TabIndex = 18;
             this.b1.TextChanged += new System.EventHandler(this.b1_TextChanged);
             // 
@@ -111,11 +111,12 @@
             // dados
             // 
             this.dados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.AAAA,
-            this.columnHeader2});
+            this.id_user,
+            this.name,
+            this.password});
             this.dados.FullRowSelect = true;
             this.dados.HideSelection = false;
+            this.dados.LabelWrap = false;
             this.dados.Location = new System.Drawing.Point(767, 247);
             this.dados.Name = "dados";
             this.dados.Size = new System.Drawing.Size(274, 158);
@@ -125,18 +126,20 @@
             this.dados.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.dados.DoubleClick += new System.EventHandler(this.dados_DoubleClick);
             // 
-            // AAAA
+            // id_user
             // 
-            this.AAAA.Text = "NOME";
+            this.id_user.Text = "id";
+            this.id_user.Width = 0;
             // 
-            // columnHeader2
+            // name
             // 
-            this.columnHeader2.Text = "SENHA";
+            this.name.Text = "NOME";
+            this.name.Width = 110;
             // 
-            // columnHeader1
+            // password
             // 
-            this.columnHeader1.Text = "id";
-            this.columnHeader1.Width = 0;
+            this.password.Text = "SENHA";
+            this.password.Width = 110;
             // 
             // button1
             // 
@@ -159,9 +162,9 @@
             // 
             // Editar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackgroundImage = global::site_pr2.Properties.Resources.edit;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.button1);
@@ -191,9 +194,9 @@
         private System.Windows.Forms.TextBox b1;
         private System.Windows.Forms.Label nome;
         private System.Windows.Forms.ListView dados;
-        private System.Windows.Forms.ColumnHeader AAAA;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader name;
+        private System.Windows.Forms.ColumnHeader password;
+        private System.Windows.Forms.ColumnHeader id_user;
         private System.Windows.Forms.Button button1;
     }
 }
