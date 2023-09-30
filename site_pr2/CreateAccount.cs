@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace site_pr2
 {
@@ -32,8 +31,7 @@ namespace site_pr2
 
         private void btnMenssage_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            while (i == 0)
+            for (int i = 0; ;)
             {
                 if (b1.Text == "" || b2.Text == "" || b1.Text == "" & b2.Text == "")
                 {
@@ -44,16 +42,7 @@ namespace site_pr2
                     MessageBoxIcon.Information);
                     break;
                 }
-                string name = b1.Text;
-                string enrollment = b2.Text;
-
-                string message = "Login: " + name +
-                                 "\nSenha: " + enrollment;
-                MessageBox.Show(
-                    message,
-                    "MONDIAL",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                string pront = b2.Text;
 
                 Connection connection = new Connection();
                 SqlCommand sqlCommand = new SqlCommand();

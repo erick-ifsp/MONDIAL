@@ -15,7 +15,6 @@ namespace site_pr2
     public partial class Editar : Form
     {
         private int id;
-        int doubleclick = 0;
         public Editar()
         {
             InitializeComponent();
@@ -66,7 +65,6 @@ namespace site_pr2
 
         private void dados_DoubleClick(object sender, EventArgs e)
         {
-            doubleclick = 1;
             int index;
             index = dados.FocusedItem.Index;
             id = int.Parse(dados.Items[index].SubItems[0].Text);
@@ -94,23 +92,7 @@ namespace site_pr2
             if (b1.Text == "" || b2.Text == "" || b1.Text == "" & b2.Text == "")
             {
                 MessageBox.Show(
-                "Clique duas vezes na informação que deseja editar ou excluir!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
-            else if (doubleclick == 1)
-            {
-                MessageBox.Show(
-                "Login alterado com sucesso!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(
-                "Clique duas vezes na informação que deseja editar ou excluir!",
+                "Clique na informação que deseja editar ou excluir!",
                 "MONDIAL™",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -120,7 +102,6 @@ namespace site_pr2
             b2.Clear();
 
             UpdateListView();
-            doubleclick = 0;
         }
 
         private void b1_TextChanged(object sender, EventArgs e)
@@ -145,14 +126,12 @@ namespace site_pr2
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             Connection connection = new Connection();
             SqlCommand sqlCommand = new SqlCommand();
 
             sqlCommand.Connection = connection.ReturnConnection();
             sqlCommand.CommandText = @"DELETE FROM CreateAccount WHERE id = @id";
             sqlCommand.Parameters.AddWithValue("@id", id);
-
             try
             {
                 sqlCommand.ExecuteNonQuery();
@@ -166,46 +145,10 @@ namespace site_pr2
                 connection.CloseConnection();
             }
 
-            if (b1.Text == "" || b2.Text == "" || b1.Text == "" & b2.Text == "")
-            {
-                MessageBox.Show(
-                "Clique duas vezes na informação que deseja editar ou excluir!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
-            else if (doubleclick == 1)
-            {
-                MessageBox.Show(
-                "Login excluido com sucesso!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(
-                "Clique duas vezes na informação que deseja editar ou excluir!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
-
             b1.Clear();
             b2.Clear();
 
             UpdateListView();
-            doubleclick = 0;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
         }
     }
 }
