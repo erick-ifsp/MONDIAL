@@ -35,9 +35,9 @@
             this.b1 = new System.Windows.Forms.TextBox();
             this.nome = new System.Windows.Forms.Label();
             this.dados = new System.Windows.Forms.ListView();
-            this.AAAA = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IdUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NameUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PasswordUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -51,7 +51,7 @@
             this.botao.Font = new System.Drawing.Font("TT Rounds Neue Cond Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botao.ForeColor = System.Drawing.Color.Transparent;
             this.botao.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.botao.Location = new System.Drawing.Point(194, 373);
+            this.botao.Location = new System.Drawing.Point(194, 370);
             this.botao.Margin = new System.Windows.Forms.Padding(0);
             this.botao.Name = "botao";
             this.botao.Size = new System.Drawing.Size(278, 36);
@@ -62,7 +62,7 @@
             // 
             // b2
             // 
-            this.b2.Location = new System.Drawing.Point(195, 320);
+            this.b2.Location = new System.Drawing.Point(195, 317);
             this.b2.MaximumSize = new System.Drawing.Size(275, 22);
             this.b2.MinimumSize = new System.Drawing.Size(275, 22);
             this.b2.Name = "b2";
@@ -77,7 +77,7 @@
             this.senha.AutoSize = true;
             this.senha.BackColor = System.Drawing.Color.Transparent;
             this.senha.Font = new System.Drawing.Font("TT Rounds Neue Cond Light", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.senha.Location = new System.Drawing.Point(192, 299);
+            this.senha.Location = new System.Drawing.Point(192, 296);
             this.senha.Name = "senha";
             this.senha.Size = new System.Drawing.Size(44, 18);
             this.senha.TabIndex = 19;
@@ -86,7 +86,7 @@
             // b1
             // 
             this.b1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.b1.Location = new System.Drawing.Point(195, 255);
+            this.b1.Location = new System.Drawing.Point(195, 252);
             this.b1.Margin = new System.Windows.Forms.Padding(4);
             this.b1.MaximumSize = new System.Drawing.Size(275, 20);
             this.b1.MaxLength = 20;
@@ -102,7 +102,7 @@
             this.nome.AutoSize = true;
             this.nome.BackColor = System.Drawing.Color.Transparent;
             this.nome.Font = new System.Drawing.Font("TT Rounds Neue Cond Light", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome.Location = new System.Drawing.Point(192, 233);
+            this.nome.Location = new System.Drawing.Point(192, 230);
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(42, 18);
             this.nome.TabIndex = 17;
@@ -111,9 +111,9 @@
             // dados
             // 
             this.dados.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.AAAA,
-            this.columnHeader2});
+            this.IdUser,
+            this.NameUser,
+            this.PasswordUser});
             this.dados.FullRowSelect = true;
             this.dados.HideSelection = false;
             this.dados.Location = new System.Drawing.Point(767, 247);
@@ -125,18 +125,20 @@
             this.dados.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.dados.DoubleClick += new System.EventHandler(this.dados_DoubleClick);
             // 
-            // AAAA
+            // IdUser
             // 
-            this.AAAA.Text = "NOME";
+            this.IdUser.Text = "id";
+            this.IdUser.Width = 0;
             // 
-            // columnHeader2
+            // NameUser
             // 
-            this.columnHeader2.Text = "SENHA";
+            this.NameUser.Text = "NOME";
+            this.NameUser.Width = 110;
             // 
-            // columnHeader1
+            // PasswordUser
             // 
-            this.columnHeader1.Text = "id";
-            this.columnHeader1.Width = 0;
+            this.PasswordUser.Text = "SENHA";
+            this.PasswordUser.Width = 110;
             // 
             // button1
             // 
@@ -148,7 +150,7 @@
             this.button1.Font = new System.Drawing.Font("TT Rounds Neue Cond Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Transparent;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(195, 426);
+            this.button1.Location = new System.Drawing.Point(195, 423);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(278, 36);
@@ -159,8 +161,8 @@
             // 
             // Editar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1262, 673);
@@ -191,9 +193,9 @@
         private System.Windows.Forms.TextBox b1;
         private System.Windows.Forms.Label nome;
         private System.Windows.Forms.ListView dados;
-        private System.Windows.Forms.ColumnHeader AAAA;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader NameUser;
+        private System.Windows.Forms.ColumnHeader PasswordUser;
+        private System.Windows.Forms.ColumnHeader IdUser;
         private System.Windows.Forms.Button button1;
     }
 }

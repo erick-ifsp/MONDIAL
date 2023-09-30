@@ -46,7 +46,7 @@
             this.nome.AutoSize = true;
             this.nome.BackColor = System.Drawing.Color.Transparent;
             this.nome.Font = new System.Drawing.Font("TT Rounds Neue Cond Light", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome.Location = new System.Drawing.Point(189, 265);
+            this.nome.Location = new System.Drawing.Point(189, 251);
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(42, 18);
             this.nome.TabIndex = 9;
@@ -56,13 +56,13 @@
             // b1
             // 
             this.b1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.b1.Location = new System.Drawing.Point(192, 287);
+            this.b1.Location = new System.Drawing.Point(192, 273);
             this.b1.Margin = new System.Windows.Forms.Padding(4);
             this.b1.MaximumSize = new System.Drawing.Size(275, 25);
             this.b1.MaxLength = 20;
             this.b1.MinimumSize = new System.Drawing.Size(275, 25);
             this.b1.Name = "b1";
-            this.b1.Size = new System.Drawing.Size(275, 22);
+            this.b1.Size = new System.Drawing.Size(275, 25);
             this.b1.TabIndex = 10;
             this.b1.TextChanged += new System.EventHandler(this.b1_TextChanged);
             // 
@@ -72,7 +72,7 @@
             this.senha.AutoSize = true;
             this.senha.BackColor = System.Drawing.Color.Transparent;
             this.senha.Font = new System.Drawing.Font("TT Rounds Neue Cond Light", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.senha.Location = new System.Drawing.Point(189, 331);
+            this.senha.Location = new System.Drawing.Point(189, 317);
             this.senha.Name = "senha";
             this.senha.Size = new System.Drawing.Size(44, 18);
             this.senha.TabIndex = 11;
@@ -81,12 +81,12 @@
             // 
             // b2
             // 
-            this.b2.Location = new System.Drawing.Point(192, 352);
+            this.b2.Location = new System.Drawing.Point(192, 338);
             this.b2.MaximumSize = new System.Drawing.Size(275, 25);
             this.b2.MinimumSize = new System.Drawing.Size(275, 25);
             this.b2.Name = "b2";
             this.b2.PasswordChar = '*';
-            this.b2.Size = new System.Drawing.Size(275, 22);
+            this.b2.Size = new System.Drawing.Size(275, 25);
             this.b2.TabIndex = 12;
             // 
             // botao
@@ -99,7 +99,7 @@
             this.botao.Font = new System.Drawing.Font("TT Rounds Neue Cond Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.botao.ForeColor = System.Drawing.Color.Transparent;
             this.botao.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.botao.Location = new System.Drawing.Point(191, 405);
+            this.botao.Location = new System.Drawing.Point(191, 391);
             this.botao.Margin = new System.Windows.Forms.Padding(0);
             this.botao.Name = "botao";
             this.botao.Size = new System.Drawing.Size(278, 36);
@@ -114,7 +114,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("TT Rounds Neue Cond Light", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(270, 452);
+            this.label1.Location = new System.Drawing.Point(270, 438);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 18);
             this.label1.TabIndex = 14;
@@ -127,7 +127,7 @@
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.DisabledLinkColor = System.Drawing.Color.Blue;
             this.linkLabel1.LinkColor = System.Drawing.Color.Blue;
-            this.linkLabel1.Location = new System.Drawing.Point(425, 452);
+            this.linkLabel1.Location = new System.Drawing.Point(425, 438);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(42, 16);
             this.linkLabel1.TabIndex = 15;

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace site_pr2
 {
@@ -56,6 +58,17 @@ namespace site_pr2
 
                 sqlCommand.ExecuteNonQuery();
 
+                string name = b1.Text;
+                string enrollment = b2.Text;
+
+                string message = "Login: " + name +
+                             "\nSenha: " + enrollment;
+
+                MessageBox.Show(
+                    message,
+                    "Atenção",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
                 MessageBox.Show(
                     "Bem-vindo!",
@@ -65,12 +78,9 @@ namespace site_pr2
 
                 b1.Clear();
                 b2.Clear();
-                
+
                 break;
             }
-
-            
-
         }
 
         private void nome_Click(object sender, EventArgs e)
@@ -96,7 +106,7 @@ namespace site_pr2
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
