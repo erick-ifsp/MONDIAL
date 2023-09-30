@@ -44,7 +44,6 @@ namespace site_pr2
                     MessageBoxIcon.Information);
                     break;
                 }
-                string pront = b2.Text;
 
                 Connection connection = new Connection();
                 SqlCommand sqlCommand = new SqlCommand();
@@ -58,11 +57,11 @@ namespace site_pr2
 
                 sqlCommand.ExecuteNonQuery();
 
-                string name = b1.Text;
-                string enrollment = b2.Text;
+                string nome = b1.Text;
+                string senha = b2.Text;
 
-                string message = "Login: " + name +
-                             "\nSenha: " + enrollment;
+                string message = "Login: " + nome +
+                             "\nSenha: " + senha;
 
                 MessageBox.Show(
                     message,
