@@ -74,8 +74,6 @@ namespace site_pr2
 
         private void botao_Click(object sender, EventArgs e)
         {
-            string pront = b2.Text;
-
             Connection connection = new Connection();
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.Connection = connection.ReturnConnection();
