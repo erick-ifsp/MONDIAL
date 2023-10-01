@@ -60,7 +60,7 @@ namespace site_pr2
                 string nome = b1.Text;
                 string senha = b2.Text;
 
-                string message = "Login: " + nome +
+                string message = "Nome: " + nome +
                              "\nSenha: " + senha;
 
                 MessageBox.Show(
