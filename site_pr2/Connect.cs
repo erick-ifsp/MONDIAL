@@ -13,7 +13,7 @@ namespace Aula1
     {
         //Propriedades ou atributos
         private readonly SqlConnection con;
-        private readonly string DataBase = "MONDIAL";
+        private readonly string DataBase = "MONDIAL"; 
 
         //Construtor
         public Connection()                            //LAPTOP-9TN8R1CF\SQLEXPRESS

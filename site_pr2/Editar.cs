@@ -177,7 +177,7 @@ namespace site_pr2
             else if (doubleclick == 1)
             {
                 MessageBox.Show(
-                "Login exclido com sucesso!",
+                "Login excluido com sucesso!",
                 "MONDIAL™",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
