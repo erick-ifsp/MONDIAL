@@ -72,24 +72,13 @@ namespace site_pr2
             id = int.Parse(dados.Items[index].SubItems[0].Text);
             b1.Text = dados.Items[index].SubItems[1].Text;
             b2.Text = dados.Items[index].SubItems[2].Text;
+            string b_name = b1.Text;
         }
 
         private void botao_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"UPDATE CreateAccount SET
-                nome = @nome,
-                senha = @senha
-                WHERE id = @id";
-
-            sqlCommand.Parameters.AddWithValue("@id", id);
-            sqlCommand.Parameters.AddWithValue("@nome", b1.Text);
-            sqlCommand.Parameters.AddWithValue("@senha", b2.Text);
-
-            sqlCommand.ExecuteNonQuery();
-
+            UserDAO userDAO = new UserDAO();
+            userDAO.UpdateUser(id);
 
             if (b1.Text == "" || b2.Text == "" || b1.Text == "" & b2.Text == "")
             {
@@ -146,25 +135,8 @@ namespace site_pr2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Connection connection = new Connection();
-            SqlCommand sqlCommand = new SqlCommand();
-
-            sqlCommand.Connection = connection.ReturnConnection();
-            sqlCommand.CommandText = @"DELETE FROM CreateAccount WHERE id = @id";
-            sqlCommand.Parameters.AddWithValue("@id", id);
-
-            try
-            {
-                sqlCommand.ExecuteNonQuery();
-            }
-            catch (Exception err)
-            {
-                throw new Exception("Erro: Problemas ao excluir usuário no banco.\n" + err.Message);
-            }
-            finally
-            {
-                connection.CloseConnection();
-            }
+            UserDAO userDAO = new UserDAO();
+            userDAO.DeleteUser(id);
 
             if (b1.Text == "" || b2.Text == "" || b1.Text == "" & b2.Text == "")
             {
@@ -193,7 +165,6 @@ namespace site_pr2
 
             b1.Clear();
             b2.Clear();
-
             UpdateListView();
 
             doubleclick = 0;
