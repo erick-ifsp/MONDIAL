@@ -9,13 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace site_pr2
 {
     public partial class Editar : Form
     {
         private int id;
-        int doubleclick = 0;
         public Editar()
         {
             InitializeComponent();
@@ -23,39 +23,23 @@ namespace site_pr2
         private void UpdateListView()
         {
             dados.Items.Clear();
-
-            Connection conn = new Connection();
-            SqlCommand sqlCom = new SqlCommand();
-
-            sqlCom.Connection = conn.ReturnConnection();
-            sqlCom.CommandText = "SELECT * FROM CreateAccount";
+            UserDAO userDAO = new UserDAO();
+            List<User> users = userDAO.SelectUser();
 
             try
             {
-                SqlDataReader dr = sqlCom.ExecuteReader();
-
-                //Enquanto for possível continuar a leitura das linhas que foram retornadas na consulta, execute.
-                while (dr.Read())
+                foreach (User user in users)
                 {
-                    int id = (int)dr["id"];
-                    string name = (string)dr["nome"];
-                    string pass = (string)dr["senha"];
-
-                    ListViewItem lv = new ListViewItem(id.ToString());
-                    lv.SubItems.Add(name);
-                    lv.SubItems.Add(pass);
+                    ListViewItem lv = new ListViewItem(user.Id.ToString());
+                    lv.SubItems.Add(user.Nome);
+                    lv.SubItems.Add(user.Senha);
                     dados.Items.Add(lv);
-
                 }
-                dr.Close();
+
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
-            }
-            finally
-            {
-                conn.CloseConnection();
             }
         }
 
@@ -66,7 +50,6 @@ namespace site_pr2
 
         private void dados_DoubleClick(object sender, EventArgs e)
         {
-            doubleclick = 1;
             int index;
             index = dados.FocusedItem.Index;
             id = int.Parse(dados.Items[index].SubItems[0].Text);
@@ -77,40 +60,28 @@ namespace site_pr2
 
         private void botao_Click(object sender, EventArgs e)
         {
-            UserDAO userDAO = new UserDAO();
-            userDAO.UpdateUser(id);
-
-            if (b1.Text == "" || b2.Text == "" || b1.Text == "" & b2.Text == "")
+            try
             {
+                User user = new User(id, b1.Text, b2.Text);
+
+                UserDAO userDAO = new UserDAO();
+                userDAO.UpdateUser(id, user);
+
+                b1.Clear();
+                b2.Clear();
+
                 MessageBox.Show(
-                "Clique duas vezes na informação que deseja editar ou excluir!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                    "Usuário editado com sucesso!",
+                    "MONDIAL™",
+                    MessageBoxButtons.OK,
+
+                    MessageBoxIcon.Information);
+                UpdateListView();
             }
-            else if (doubleclick == 1)
+            catch (Exception error)
             {
-                MessageBox.Show(
-                "Login alterado com sucesso!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                MessageBox.Show(error.Message);
             }
-            else
-            {
-                MessageBox.Show(
-                "Clique duas vezes na informação que deseja editar ou excluir!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
-
-            b1.Clear();
-            b2.Clear();
-
-            UpdateListView();
-
-            doubleclick = 0;
         }
 
         private void b1_TextChanged(object sender, EventArgs e)
@@ -135,39 +106,28 @@ namespace site_pr2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserDAO userDAO = new UserDAO();
-            userDAO.DeleteUser(id);
-
-            if (b1.Text == "" || b2.Text == "" || b1.Text == "" & b2.Text == "")
+            try
             {
-                MessageBox.Show(
-                "Clique duas vezes na informação que deseja editar ou excluir!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
-            else if (doubleclick == 1)
-            {
-                MessageBox.Show(
-                "Login excluido com sucesso!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(
-                "Clique duas vezes na informação que deseja editar ou excluir!",
-                "MONDIAL™",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
-            }
+                User user = new User(id, b1.Text, b2.Text);
 
-            b1.Clear();
-            b2.Clear();
-            UpdateListView();
+                UserDAO userDAO = new UserDAO();
+                userDAO.DeleteUser(id, user);
 
-            doubleclick = 0;
+                b1.Clear();
+                b2.Clear();
+
+                MessageBox.Show(
+                    "Usuário excluido com sucesso!",
+                    "MONDIAL™",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                UpdateListView();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
     }
 }

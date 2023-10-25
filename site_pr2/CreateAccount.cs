@@ -16,6 +16,7 @@ namespace site_pr2
 {
     public partial class CreateAccount : Form
     {
+        private int id;
         public CreateAccount()
         {
             InitializeComponent();
@@ -33,29 +34,12 @@ namespace site_pr2
 
         private void btnMenssage_Click(object sender, EventArgs e)
         {
-            for (int i = 0; ;)
+            try
             {
-                if (b1.Text == "" || b2.Text == "" || b1.Text == "" & b2.Text == "")
-                {
-                    MessageBox.Show(
-                    "Preencha todos os campos para continuar",
-                    "MONDIAL™",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                    break;
-                }
+                User user = new User(id, b1.Text, b2.Text);
 
-                Connection connection = new Connection();
-                SqlCommand sqlCommand = new SqlCommand();
-
-                sqlCommand.Connection = connection.ReturnConnection();
-                sqlCommand.CommandText = @"INSERT INTO CreateAccount VALUES
-            (@nome, @senha)";
-
-                sqlCommand.Parameters.AddWithValue("@nome", b1.Text);
-                sqlCommand.Parameters.AddWithValue("@senha", b2.Text);
-
-                sqlCommand.ExecuteNonQuery();
+                UserDAO userDAO = new UserDAO();
+                userDAO.InsertUser(user);
 
                 string nome = b1.Text;
                 string senha = b2.Text;
@@ -77,8 +61,10 @@ namespace site_pr2
 
                 b1.Clear();
                 b2.Clear();
-
-                break;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
             }
         }
 
