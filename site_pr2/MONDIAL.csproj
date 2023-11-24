@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +52,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="AddressDAO.cs" />
+    <Compile Include="EditAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAddress.Designer.cs">
+      <DependentUpon>EditAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include=".Designer.cs">
+      <DependentUpon>LoginUser.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FillAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FillAddress.Designer.cs">
+      <DependentUpon>FillAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <Compile Include="Connect.cs" />
     <Compile Include="CreateAccount.cs">
@@ -54,11 +81,11 @@
     <Compile Include="CreateAccount.Designer.cs">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editar.cs">
+    <Compile Include="EditUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Editar.Designer.cs">
-      <DependentUpon>Editar.cs</DependentUpon>
+    <Compile Include="EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,8 +93,17 @@
     <EmbeddedResource Include="CreateAccount.resx">
       <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Editar.resx">
-      <DependentUpon>Editar.cs</DependentUpon>
+    <EmbeddedResource Include="EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAddress.resx">
+      <DependentUpon>EditAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginUser.resx">
+      <DependentUpon>LoginUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FillAddress.resx">
+      <DependentUpon>FillAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +114,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

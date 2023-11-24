@@ -9,19 +9,25 @@ namespace site_pr2
     internal class User
     {
         private int _id;
-        private string _nome;
+        private string _usuario;
         private string _senha;
+        private string _cpf;
+        private string _email;
 
-        public User(int id,
-                    string nome,
-                    string senha
+        public User(
+                    int id,
+                    string usuario,
+                    string senha,
+                    string cpf,
+                    string email
                    )
         {
             Id = id;
-            Nome = nome;
+            Usuario = usuario;
             Senha = senha;
+            Cpf = cpf;
+            Email = email;
         }
-
         public int Id
         {
             set
@@ -29,16 +35,15 @@ namespace site_pr2
                 _id = value;
             }
             get { return _id; }
-        }
-        public string Nome
+        }public string Usuario
         {
             set
             {
                 if (string.IsNullOrEmpty(value))
                     throw new Exception("Preencha todos os campos");
-                _nome = value;
+                _usuario = value;
             }
-            get { return _nome; }
+            get { return _usuario; }
         }
         public string Senha
         {
@@ -49,6 +54,26 @@ namespace site_pr2
                 _senha = value;
             }
             get { return _senha; }
+        }
+        public string Cpf
+        {
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException("Preencha todos os campos");
+                _cpf = value;
+            }
+            get { return _cpf; }
+        }
+        public string Email
+        {
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                    throw new ArgumentException("Preencha todos os campos");
+                _email = value;
+            }
+            get { return _email; }
         }
     }
 }

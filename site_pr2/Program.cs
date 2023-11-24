@@ -16,7 +16,7 @@ namespace site_pr2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CreateAccount());
+            Application.Run(new LoginUser());
         }
     }
 }

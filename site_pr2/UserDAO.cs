@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,65 +26,93 @@ namespace site_pr2
             {
                 SqlDataReader dr = sqlCom.ExecuteReader();
 
-                //Enquanto for possível continuar a leitura das linhas que foram retornadas na consulta, execute.
                 while (dr.Read())
                 {
                     User objeto = new User(
                     (int)dr["id"],
-                    (string)dr["nome"],
-                    (string)dr["senha"]
+                    (string)dr["usuario"],
+                    (string)dr["senha"],
+                    (string)dr["cpf"],
+                    (string)dr["email"]
                     );
 
                     users.Add(objeto);
                 }
                 dr.Close();
-                return users;
             }
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show(err.Message);
+                throw new Exception("erro na leitura");
             }
             finally
             {
                 conn.CloseConnection();
             }
-            return null;
+            return users;
         }
         public void UpdateUser(int id, User user)
         {
             {
-                Connection connection = new Connection();
-                SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.Connection = connection.ReturnConnection();
-                sqlCommand.CommandText = @"UPDATE CreateAccount SET
-                nome = @nome,
-                senha = @senha
-                WHERE id = @id";
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Senha));
+                    StringBuilder sb = new StringBuilder();
+                    foreach (byte b in bytes)
+                    {
+                        sb.Append(b.ToString("x2"));
+                    }
+                    string sha256string = sb.ToString();
 
-                sqlCommand.Parameters.AddWithValue("@id", id);
-                sqlCommand.Parameters.AddWithValue("@nome", user.Nome);
-                sqlCommand.Parameters.AddWithValue("@senha", user.Senha);
+                    Connection connection = new Connection();
+                    SqlCommand sqlCommand = new SqlCommand();
+                    sqlCommand.Connection = connection.ReturnConnection();
+                    sqlCommand.CommandText = @"UPDATE CreateAccount SET
+                    usuario = @usuario,
+                    senha = @senha,
+                    cpf = @cpf,
+                    email = @email
+                    WHERE id = @id";
 
-                sqlCommand.ExecuteNonQuery();
+                    sqlCommand.Parameters.AddWithValue("@id", id);
+                    sqlCommand.Parameters.AddWithValue("@usuario", user.Usuario);
+                    sqlCommand.Parameters.AddWithValue("@senha", sha256string);
+                    sqlCommand.Parameters.AddWithValue("@cpf", user.Cpf);
+                    sqlCommand.Parameters.AddWithValue("@email", user.Email);
+
+                    sqlCommand.ExecuteNonQuery();
+                }
             }
         }
         public void InsertUser(User user)
         {
             {
-                Connection connection = new Connection();
-                SqlCommand sqlCommand = new SqlCommand();
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Senha));
+                    StringBuilder sb = new StringBuilder();
+                    foreach (byte b in bytes)
+                    {
+                        sb.Append(b.ToString("x2"));
+                    }
+                    string sha256string = sb.ToString();
 
-                sqlCommand.Connection = connection.ReturnConnection();
-                sqlCommand.CommandText = @"INSERT INTO CreateAccount VALUES
-            (@nome, @senha)";
+                    Connection connection = new Connection();
+                    SqlCommand sqlCommand = new SqlCommand();
 
-                sqlCommand.Parameters.AddWithValue("@nome", user.Nome);
-                sqlCommand.Parameters.AddWithValue("@senha", user.Senha);
+                    sqlCommand.Connection = connection.ReturnConnection();
+                    sqlCommand.CommandText = @"INSERT INTO CreateAccount VALUES
+                    (@usuario, @senha, @cpf, @email)";
 
-                sqlCommand.ExecuteNonQuery();
+                    sqlCommand.Parameters.AddWithValue("@usuario", user.Usuario);
+                    sqlCommand.Parameters.AddWithValue("@senha", sha256string);
+                    sqlCommand.Parameters.AddWithValue("@cpf", user.Cpf);
+                    sqlCommand.Parameters.AddWithValue("@email", user.Email);
+
+                    sqlCommand.ExecuteNonQuery();
+                }
             }
         }
-        public void DeleteUser(int id, User user)
+        public void DeleteUser(int id)
         {
             Connection connection = new Connection();
             SqlCommand sqlCommand = new SqlCommand();
