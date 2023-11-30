@@ -108,14 +108,6 @@ namespace site_pr2
                 }
             }
         }
-        static byte[] CalcularSHA256Hash(string input)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = Encoding.UTF8.GetBytes(input);
-                return sha256.ComputeHash(bytes);
-            }
-        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
         }

@@ -35,7 +35,8 @@ namespace site_pr2
                 _id = value;
             }
             get { return _id; }
-        }public string Usuario
+        }
+        public string Usuario
         {
             set
             {
